@@ -1,6 +1,7 @@
 import React from 'react';
 import AdditionalFeature from './AdditionalFeature';
 
+
 const AdditionalFeatures = props => {
   return (
     <div className="content">
