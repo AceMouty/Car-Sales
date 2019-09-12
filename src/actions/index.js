@@ -1,8 +1,12 @@
 // Action Types
 export const ADD_FEATURE = "ADD_FEATURE";
-
+export const REMOVE_FEATURE = "REMOVE_FEATURE";
 // Action Creators
 export const addFeature = feature => {
 	console.log("MADE IT TO THE ADD FEATURE FUNCITON")
-	// return {type: ADD_FEATURE, paylodad: feature}
+	return {type: ADD_FEATURE, payload: feature}
+}
+
+export const removeItem = feature => {
+	return {type: ADD_FEATURE, payload: feature}
 }
