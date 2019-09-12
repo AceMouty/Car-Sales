@@ -8,5 +8,6 @@ export const addFeature = feature => {
 }
 
 export const removeItem = feature => {
-	return {type: ADD_FEATURE, payload: feature}
+	console.log("MADE IT TO THE REMOVE FEATURE FUNCTION action", feature)
+	return {type: REMOVE_FEATURE, payload: feature}
 }

@@ -3,14 +3,18 @@ import AddedFeature from './AddedFeature';
 // Connect the component to the store
 import { connect } from 'react-redux';
 
-const AddedFeatures = ({car}) => {
+const AddedFeatures = ({car, removeFeature}) => {
   return (
     <div className="content">
       <h6>Added features:</h6>
       {car.features.length ? (
         <ol type="1">
           {car.features.map(item => (
-            <AddedFeature key={item.id} feature={item} />
+						<AddedFeature 
+							key={item.id} 
+							feature={item} 
+							removeFeature={removeFeature} 
+						/>
           ))}
         </ol>
       ) : (

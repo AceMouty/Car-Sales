@@ -6,11 +6,13 @@ import Total from './components/Total';
 // Bring in connect so that we can connect the component to the Redux store
 import { connect } from 'react-redux';
 // Bring in actions 
-import {addFeature} from './actions'
+import {addFeature, removeItem} from './actions'
 
-const App = ({ state, addFeature }) => {
+const App = ({ state, addFeature, removeItem }) => {
   const removeFeature = item => {
 		// dispatch an action here to remove an item
+		console.log("FROM REMOVE FEATURE app.js", item)
+		removeItem(item)
   };
 
   const buyItem = item => {
@@ -23,7 +25,7 @@ const App = ({ state, addFeature }) => {
     <div className="boxes">
       <div className="box">
         <Header car={state.car} />
-        <AddedFeatures car={state.car} />
+        <AddedFeatures car={state.car} removeFeature={removeFeature}/>
       </div>
       <div className="box">
         <AdditionalFeatures store={state.store} buyItem={buyItem}/>
@@ -38,4 +40,4 @@ const mapStateToProps = state => {
 		state: state
 	}
 }
-export default connect(mapStateToProps, {addFeature})(App);
+export default connect(mapStateToProps, {addFeature, removeItem})(App);

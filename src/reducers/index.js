@@ -18,27 +18,30 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, action) => {
+	console.log("FROM THE REDUCER!", action)
 	switch (action.type) {
 		case ADD_FEATURE:
 			return {
 				...state,
 				car: {
-						...state.car,
-						price: state.car.price + action.payload.price,
-						features: [...state.car.features, action.payload]
-				},                                                                 
-				store: state.store.filter(feature => ![...state.car.features.map(feature => feature.id), action.payload.id].includes(feature.id))
+					...state.car,
+					price: state.car.price + action.payload.price,
+					features: [...state.car.features, action.payload]
+				}, 
+				// SORRY
+				store: state.store.filter(({id}) => ![...state.car.features.map(({id}) => id), action.payload.id].includes(id))
 			}
 		case REMOVE_FEATURE:
-				return {
-					...state,
-					car: {
-							...state.car,
-							price: state.car.price - action.payload.price,
-							features: state.car.features.filter(feature => feature.id !== action.payload.id)
-					},
-					store: [...state.store, action.payload]  
-				}
+			console.log("MADE IT INTO THE REMOVE CASE")
+			return {
+				...state,
+				car: {
+					...state.car,
+					price: state.car.price - action.payload.price,
+					features: state.car.features.filter(feature => ![...state.store.map(feature => feature.id), action.payload.id].includes(feature.id))
+				},
+				store: [...state.store, action.payload]
+			}
 		default:
 				return state
 	}
